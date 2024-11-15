@@ -1,0 +1,6 @@
+prepare_cup someCup small
+add_water someCup 50
+brew_tea someCup pink
+add_honey someCup 2
+serve someCup
+empty_cup someCup
