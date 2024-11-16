@@ -16,9 +16,9 @@
 "serve" { return SERVE; }
 "empty_cup" { return EMPTY_CUP; }
 
-"small" { return TEA_SIZE_SMALL; }
-"medium" { return TEA_SIZE_MEDIUM; }
-"large" { return TEA_SIZE_LARGE; }
+"small" { return CUP_SIZE_SMALL; }
+"medium" { return CUP_SIZE_MEDIUM; }
+"large" { return CUP_SIZE_LARGE; }
 
 "black" { return TEA_TYPE_BLACK; }
 "green" { return TEA_TYPE_GREEN; }

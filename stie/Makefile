@@ -1,5 +1,5 @@
 CC = clang-18
-CFLAGS = -O2 -Wall -Wno-implicit
+CFLAGS = -O2 -Wall -Wno-implicit -Wno-return-type -Wno-unused-function
 
 LEX = lex
 BISON = bison
@@ -47,10 +47,10 @@ ${COMPILER_OUTPUT}: ${COMPILER_SOURCES}
 	@rm -f ${COMPILER_SOURCES} ${BISON_OUTPUT_HEADER}
 
 test: ${COMPILER_OUTPUT}
-	@$^ < test.txt > _test_.c
-	@${CC} _test_.c stie.c -o _test_
-	@./_test_
-	@rm -f _test_.c _test_
+	@$^ < test.txt > test.c
+	@${CC} test.c stie.c -o test
+	@./test
+	@rm -f test.c test
 
 clean:
 	rm -rf ${OUTPUT_DIR}
