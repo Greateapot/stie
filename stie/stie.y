@@ -17,7 +17,7 @@
 %token CUP_SIZE_SMALL CUP_SIZE_MEDIUM CUP_SIZE_LARGE;
 %token TEA_TYPE_BLACK TEA_TYPE_GREEN TEA_TYPE_PINK;
 
-%type <identifier> str oper tea_size tea_type;
+%type <identifier> str oper cup_size tea_type;
 
 %%
 
@@ -30,7 +30,7 @@ str: oper       { sprintf($$, "%s", $1); } /* singleline */
     | oper str  { sprintf($$, "%s\n\t%s", $1, $2); }  /* multiline */
     ;
 
-oper: PREPARE_CUP IDENTIFIER tea_size       { sprintf($$, "cup_t *%s = prepare_cup(%s);", $2, $3); }
+oper: PREPARE_CUP IDENTIFIER cup_size       { sprintf($$, "cup_t *%s = prepare_cup(%s);", $2, $3); }
     | ADD_WATER IDENTIFIER NUMBER           { sprintf($$, "add_water(%s, %d);", $2, $3); }
     | BREW_TEA IDENTIFIER tea_type          { sprintf($$, "brew_tea(%s, %s);", $2, $3); }
     | ADD_SUGAR IDENTIFIER NUMBER           { sprintf($$, "add_sugar(%s, %d);", $2, $3); }
@@ -41,7 +41,7 @@ oper: PREPARE_CUP IDENTIFIER tea_size       { sprintf($$, "cup_t *%s = prepare_c
     | EMPTY_CUP IDENTIFIER                  { sprintf($$, "empty_cup(%s);", $2); }
     ;
 
-tea_size: CUP_SIZE_SMALL    { sprintf($$, "CUP_SIZE_SMALL"); }
+cup_size: CUP_SIZE_SMALL    { sprintf($$, "CUP_SIZE_SMALL"); }
     | CUP_SIZE_MEDIUM       { sprintf($$, "CUP_SIZE_MEDIUM"); }
     | CUP_SIZE_LARGE        { sprintf($$, "CUP_SIZE_LARGE"); }
     ;
